@@ -1,0 +1,72 @@
+.scanner-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-lg);
+  background: #071d30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.scanner-frame__watermark {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.42;
+  filter: saturate(0.8);
+}
+
+.scanner-frame__corner {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--color-accent);
+}
+
+.scanner-frame__corner--tl {
+  top: 12px;
+  left: 12px;
+  border-right: none;
+  border-bottom: none;
+  border-top-left-radius: var(--radius-sm);
+}
+
+.scanner-frame__corner--tr {
+  top: 12px;
+  right: 12px;
+  border-left: none;
+  border-bottom: none;
+  border-top-right-radius: var(--radius-sm);
+}
+
+.scanner-frame__corner--bl {
+  bottom: 12px;
+  left: 12px;
+  border-right: none;
+  border-top: none;
+  border-bottom-left-radius: var(--radius-sm);
+}
+
+.scanner-frame__corner--br {
+  bottom: 12px;
+  right: 12px;
+  border-left: none;
+  border-top: none;
+  border-bottom-right-radius: var(--radius-sm);
+}
+
+.scanner-frame__scanline {
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  top: 50%;
+  height: 1px;
+  background: var(--color-accent);
+  opacity: 0.6;
+}
+
+.scanner-frame.is-found .scanner-frame__corner {
+  border-color: var(--color-success);
+}

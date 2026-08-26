@@ -1,0 +1,65 @@
+.home__topbar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.home__welcome {
+  color: var(--color-text-secondary);
+  font-size: var(--fs-sm);
+}
+
+.home__brand {
+  font-size: 1.85rem;
+  font-weight: 800;
+}
+
+.home__search {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  background: var(--color-surface);
+  border: 1px solid var(--color-surface-border);
+  border-radius: var(--radius-pill);
+  min-height: 46px;
+  padding: 10px 14px;
+  color: var(--color-text-muted);
+}
+
+.home__search input {
+  flex: 1;
+  background: none;
+  border: none;
+  color: var(--color-text-primary);
+  font-size: var(--fs-sm);
+}
+
+.home__search input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.home__categories {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.home__products {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.home-page .section-title {
+  margin: 18px 0 10px;
+  font-size: 1rem;
+}
+
+.home-page .btn {
+  width: 100%;
+  min-height: 38px;
+  padding: 9px 8px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+}

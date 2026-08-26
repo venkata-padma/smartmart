@@ -1,0 +1,72 @@
+.settings__intro {
+  color: var(--color-text-secondary);
+  font-size: var(--fs-sm);
+  margin-bottom: var(--space-5);
+}
+
+.settings__list {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.settings__row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border: 1px solid var(--color-surface-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+
+.settings__icon {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--color-accent);
+  background: var(--color-accent-soft);
+}
+
+.settings__copy {
+  display: grid;
+  gap: 3px;
+  flex: 1;
+}
+
+.settings__copy strong {
+  font-size: var(--fs-sm);
+}
+
+.settings__copy small {
+  color: var(--color-text-muted);
+  font-size: var(--fs-xs);
+}
+
+.settings__toggle {
+  width: 44px;
+  height: 26px;
+  border: 0;
+  padding: 3px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.18);
+  transition: background 0.35s ease;
+}
+
+.settings__toggle span {
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 0.35s ease;
+}
+
+.settings__toggle.is-on {
+  background: var(--color-accent);
+}
+
+.settings__toggle.is-on span {
+  transform: translateX(18px);
+}

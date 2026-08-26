@@ -1,0 +1,10 @@
+import { CartProvider } from './context/CartContext';
+import AppRouter from './router/AppRouter';
+
+export default function App() {
+  return (
+    <CartProvider>
+      <AppRouter />
+    </CartProvider>
+  );
+}

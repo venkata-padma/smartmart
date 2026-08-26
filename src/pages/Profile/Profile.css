@@ -1,0 +1,123 @@
+.profile__card {
+  background: var(--color-accent-strong);
+  color: #06263f;
+  border-radius: var(--radius-lg);
+  padding: var(--space-6) var(--space-5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-5);
+}
+
+.profile__avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(6, 38, 63, 0.15);
+  border: 2px solid rgba(6, 38, 63, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-2);
+}
+
+.profile__name {
+  font-size: var(--fs-lg);
+  font-weight: 800;
+}
+
+.profile__email {
+  font-size: var(--fs-sm);
+  opacity: 0.8;
+}
+
+.profile__membership {
+  margin-top: var(--space-2);
+  background: rgba(6, 38, 63, 0.15);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+}
+
+.profile__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+
+.profile__stat {
+  background: var(--color-surface);
+  border: 1px solid var(--color-surface-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.profile__stat-value {
+  font-size: var(--fs-lg);
+  font-weight: 800;
+  color: var(--color-accent);
+}
+
+.profile__stat-label {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  font: inherit;
+  color: var(--color-text-secondary);
+  font-size: var(--fs-xs);
+}
+
+.profile__menu {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.profile__menu-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  background: transparent;
+  border: 1px solid var(--color-surface-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  color: var(--color-text-primary);
+  width: 100%;
+  text-align: left;
+}
+
+.profile__menu-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background: var(--color-accent-soft);
+  color: var(--color-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.profile__menu-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile__menu-title {
+  font-weight: 600;
+}
+
+.profile__menu-subtitle {
+  color: var(--color-text-secondary);
+  font-size: var(--fs-sm);
+}

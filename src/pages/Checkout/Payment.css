@@ -1,0 +1,25 @@
+.payment__section-heading {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-4);
+}
+
+.payment__section-heading h2 {
+  font-size: var(--fs-md);
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.payment__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+
+.payment__summary {
+  margin-bottom: var(--space-6);
+  flex: 1;
+}

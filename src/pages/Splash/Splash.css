@@ -1,0 +1,109 @@
+.splash {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-6);
+  text-align: center;
+  padding: var(--space-6);
+}
+
+/* Stage 1 -> 2 -> 3: a single continuous animation whose per-keyframe
+   timing-function mimics chained transitions (ease-out into the brighter
+   mid frame, then ease-in-out as it dissolves into its resting state). */
+.splash__logo {
+  width: clamp(110px, 34vw, 170px);
+  aspect-ratio: 1280 / 1056;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  animation: splash-logo-intro 1.6s both;
+}
+
+.splash__cart-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Title: opacity 0 -> 1 while easing into its centered resting position,
+   linear timing per spec. */
+.splash__brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  opacity: 0;
+  animation: splash-title-in 0.7s linear both;
+  animation-delay: 1.35s;
+}
+
+.splash__title {
+  font-size: var(--fs-xxl);
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.splash__tagline {
+  color: var(--color-text-secondary);
+  font-size: var(--fs-md);
+}
+
+/* Button: comes in last, ease-in-out. */
+.splash__cta {
+  width: 100%;
+  opacity: 0;
+  pointer-events: none;
+  animation: splash-cta-in 0.5s ease-in-out both;
+  animation-delay: 1.95s;
+}
+
+@keyframes splash-logo-intro {
+  0% {
+    opacity: 0.32;
+    transform: scale(0.86) translateY(16px);
+    animation-timing-function: ease-out;
+  }
+  45% {
+    opacity: 0.82;
+    transform: scale(1.02) translateY(0);
+    animation-timing-function: ease-in-out;
+  }
+  75% {
+    opacity: 1;
+    transform: scale(1.05) translateY(-4px);
+    animation-timing-function: ease-in-out;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(-30px);
+  }
+}
+
+@keyframes splash-title-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes splash-cta-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  99% {
+    pointer-events: none;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+}

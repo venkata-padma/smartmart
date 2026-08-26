@@ -1,0 +1,28 @@
+.stepper {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.stepper__btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: var(--color-accent-soft);
+  color: var(--color-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stepper__btn:active {
+  background: var(--color-accent);
+  color: #06263f;
+}
+
+.stepper__value {
+  min-width: 18px;
+  text-align: center;
+  font-weight: 600;
+}

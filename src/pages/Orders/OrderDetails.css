@@ -1,0 +1,112 @@
+.order-details__card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-surface-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  margin-bottom: var(--space-5);
+}
+
+.order-details__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-4);
+}
+
+.order-details__label {
+  color: var(--color-text-secondary);
+  font-size: var(--fs-sm);
+}
+
+.order-details__id {
+  font-size: var(--fs-xl);
+  font-weight: 800;
+}
+
+.order-details__meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.order-details__meta p {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-text-secondary);
+  font-size: var(--fs-sm);
+}
+
+.order-details__items-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--fs-md);
+  font-weight: 700;
+  margin-bottom: var(--space-4);
+}
+
+.order-details__items {
+  display: flex;
+  flex-direction: column;
+}
+
+.order-details__items li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-3) 0;
+}
+
+.order-details__items li.has-divider {
+  border-top: 1px solid var(--color-surface-border);
+  margin-top: var(--space-2);
+  padding-top: var(--space-4);
+}
+
+.order-details__item-emoji {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  background: var(--color-accent-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.order-details__item-body {
+  flex: 1;
+}
+
+.order-details__item-body h4 {
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.order-details__item-body p {
+  color: var(--color-text-secondary);
+  font-size: var(--fs-sm);
+}
+
+.order-details__item-unit {
+  color: var(--color-text-muted) !important;
+  font-size: var(--fs-xs) !important;
+}
+
+.order-details__item-total {
+  font-weight: 700;
+}
+
+.order-details__total-paid {
+  display: flex;
+  justify-content: space-between;
+  background: var(--color-surface);
+  border: 1px solid var(--color-surface-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  font-weight: 700;
+  font-size: var(--fs-lg);
+  margin: var(--space-4) 0 var(--space-6);
+}

@@ -1,0 +1,96 @@
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: var(--max-width);
+  height: var(--bottom-nav-height);
+  background: rgba(4, 22, 38, 0.97);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid var(--color-surface-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 6px 8px calc(6px + env(safe-area-inset-bottom));
+  z-index: 10;
+  overflow: visible;
+}
+
+.bottom-nav__item {
+  position: relative;
+  flex: 1;
+  height: 62px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  color: var(--color-text-muted);
+  font-size: var(--fs-xs);
+  min-width: 0;
+  /* Each item's natural DOM slot is fixed (scan=0, home=1, cart=2); --shift is the
+     number of slot-widths to offset it into its current visual slot. Swapping two
+     tabs only ever changes their two --shift values, so the third item's transform
+     never changes and it stays visually still. */
+  transform: translateX(calc(var(--shift, 0) * 100%));
+  transition: color 0.7s ease, transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bottom-nav__item.is-active {
+  color: var(--color-accent);
+  transform: translateX(calc(var(--shift, 0) * 100%)) translateY(-10px);
+  z-index: 2;
+}
+
+.bottom-nav__icon-wrap {
+  position: relative;
+  display: flex;
+  width: 48px;
+  height: 48px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.75s ease, color 0.75s ease, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.75s ease;
+}
+
+.bottom-nav__item.is-active .bottom-nav__icon-wrap {
+  background: var(--color-accent);
+  color: #06263f;
+  transform: scale(1.12);
+  box-shadow: 0 10px 24px rgba(142, 202, 230, 0.28);
+  animation: nav-circle-arrive 1.15s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.bottom-nav__item.is-active .bottom-nav__label {
+  animation: nav-label-in 0.8s ease both;
+}
+
+@keyframes nav-circle-arrive {
+  0% { opacity: 0.65; transform: scale(0.72); }
+  62% { opacity: 1; transform: scale(1.18); }
+  82% { transform: scale(1.06); }
+  100% { transform: scale(1.12); }
+}
+
+@keyframes nav-label-in {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.bottom-nav__badge {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background: var(--color-danger);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  min-width: 16px;
+  height: 16px;
+  border-radius: var(--radius-pill);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+}
