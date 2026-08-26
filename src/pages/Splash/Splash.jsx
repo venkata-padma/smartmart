@@ -21,7 +21,7 @@ export default function Splash() {
       <div className="splash__cta">
         <Button
           variant="primary"
-          onClick={() => navigate('/onboarding', { state: { anim: 'push-left' } })}
+          onClick={() => navigate('/onboarding')}
           icon={<Icon name="chevronRight" size={18} />}
         >
           Start Shopping

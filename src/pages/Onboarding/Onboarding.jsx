@@ -47,7 +47,7 @@ export default function Onboarding() {
         </button>
       </div>
 
-      <div key={step} className="page-anim page-anim--push-left">
+      <div key={step} className="page-anim page-anim--slide-fade">
         <OnboardingSlide {...slides[step]} />
       </div>
 

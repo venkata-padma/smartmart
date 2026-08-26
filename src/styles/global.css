@@ -53,6 +53,20 @@ input {
   font-family: inherit;
 }
 
+/* Browsers fill autofilled/selected-suggestion inputs with an opaque white
+   background by default (via the UA's internal autofill styling), stomping
+   our dark theme. This forces it back to the app's own field color. */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px var(--color-bg-soft) inset;
+  box-shadow: 0 0 0 1000px var(--color-bg-soft) inset;
+  -webkit-text-fill-color: var(--color-text-primary);
+  caret-color: var(--color-text-primary);
+  transition: background-color 9999s ease-in-out 0s;
+}
+
 ul,
 ol {
   margin: 0;
@@ -121,19 +135,21 @@ p {
   min-height: 0;
 }
 
-.page-anim--push-left {
-  animation: page-push-left-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+.page-anim--slide-fade {
+  animation: page-slide-fade-in 0.75s cubic-bezier(0.4, 0, 0.2, 1) both;
 }
 
 .page-anim--fade {
   animation: page-fade-in 0.85s both;
 }
 
-@keyframes page-push-left-in {
+@keyframes page-slide-fade-in {
   from {
-    transform: translateX(-100%);
+    opacity: 0;
+    transform: translateX(-32px);
   }
   to {
+    opacity: 1;
     transform: translateX(0);
   }
 }

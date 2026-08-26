@@ -46,11 +46,16 @@ export default function BottomNav() {
             className={`bottom-nav__item ${isActive ? 'is-active' : ''}`}
             style={{ '--shift': slot - domIndex }}
           >
-            <span className="bottom-nav__icon-wrap">
-              <Icon name={item.icon} size={22} />
-              {item.label === 'Cart' && itemCount > 0 && <span className="bottom-nav__badge">{itemCount}</span>}
+            {/* Horizontal slot position lives on this NavLink (fast, quiet).
+                Vertical "lift into center" lives on this inner wrapper (slow,
+                visible) so the two motions can run at different speeds. */}
+            <span className="bottom-nav__lift">
+              <span className="bottom-nav__icon-wrap">
+                <Icon name={item.icon} size={22} />
+                {item.label === 'Cart' && itemCount > 0 && <span className="bottom-nav__badge">{itemCount}</span>}
+              </span>
+              <span className="bottom-nav__label">{item.label}</span>
             </span>
-            <span className="bottom-nav__label">{item.label}</span>
           </NavLink>
         );
       })}
