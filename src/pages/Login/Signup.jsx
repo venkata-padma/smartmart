@@ -2,11 +2,13 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../components/common/Button';
 import Icon from '../../assets/icons/Icon';
-import { setAuthenticated } from '../../utils/auth';
+import { setAuthenticated, setCurrentUser } from '../../utils/auth';
+import { useCart } from '../../hooks/useCart';
 import './Signup.css';
 
 export default function Signup() {
   const navigate = useNavigate();
+  const { switchUser } = useCart();
   const [form, setForm] = useState({ name: '', email: '', password: '', confirmPassword: '' });
   const [error, setError] = useState('');
 
@@ -17,7 +19,9 @@ export default function Signup() {
       setError('Passwords do not match.');
       return;
     }
+    setCurrentUser({ name: form.name, email: form.email });
     setAuthenticated(true);
+    switchUser(form.email);
     navigate('/home');
   };
 

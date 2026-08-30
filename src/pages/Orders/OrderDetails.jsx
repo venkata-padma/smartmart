@@ -4,16 +4,29 @@ import PageContainer from '../../components/layout/PageContainer';
 import StatusBadge from '../../components/common/StatusBadge';
 import OrderSummary from '../../components/common/OrderSummary';
 import Button from '../../components/common/Button';
+import EmptyState from '../../components/common/EmptyState';
 import Icon from '../../assets/icons/Icon';
-import { orders, products } from '../../data/placeholderData';
+import { products } from '../../data/placeholderData';
 import './OrderDetails.css';
 import { useCart } from '../../hooks/useCart';
 
 export default function OrderDetails() {
   const { orderId } = useParams();
   const navigate = useNavigate();
-  const { addItem } = useCart();
-  const order = orders.find((o) => o.id === orderId) || orders[0];
+  const { orders, addItem } = useCart();
+  const order = orders.find((o) => o.id === orderId);
+
+  if (!order) {
+    return (
+      <>
+        <AppHeader title="Order Details" />
+        <PageContainer withNav={false}>
+          <EmptyState icon="bag" title="Order not found" subtitle="This order doesn't exist in your history" />
+        </PageContainer>
+      </>
+    );
+  }
+
   const handleOrderAgain = () => {
     order.items.forEach((item) => {
       const product = products.find((candidate) => candidate.id === item.id);

@@ -4,11 +4,12 @@ import PageContainer from '../../components/layout/PageContainer';
 import IconButton from '../../components/common/IconButton';
 import OrderCard from '../../components/orders/OrderCard';
 import EmptyState from '../../components/common/EmptyState';
-import { orders } from '../../data/placeholderData';
+import { useCart } from '../../hooks/useCart';
 import './OrderHistory.css';
 
 export default function OrderHistory() {
   const navigate = useNavigate();
+  const { orders } = useCart();
 
   return (
     <>

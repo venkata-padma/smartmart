@@ -1,15 +1,24 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Icon from '../../assets/icons/Icon';
 import Button from '../../components/common/Button';
-import { setAuthenticated } from '../../utils/auth';
+import { getCurrentUser, setAuthenticated, setCurrentUser } from '../../utils/auth';
+import { useCart } from '../../hooks/useCart';
 import './Login.css';
 
 export default function Login() {
   const navigate = useNavigate();
+  const { switchUser } = useCart();
+  const [email, setEmail] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // Keep the previously known name if this is the same account signing back
+    // in; otherwise it's a different/unknown account, so just their email.
+    const existing = getCurrentUser();
+    setCurrentUser(existing?.email === email ? existing : { email });
     setAuthenticated(true);
+    switchUser(email);
     navigate('/home');
   };
 
@@ -28,7 +37,14 @@ export default function Login() {
       <form className="login__form" onSubmit={handleSubmit}>
         <label className="login__field">
           <span>Email</span>
-          <input type="email" placeholder="Enter your email" required />
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Enter your email"
+            autoComplete="email"
+            required
+          />
         </label>
 
         <label className="login__field">

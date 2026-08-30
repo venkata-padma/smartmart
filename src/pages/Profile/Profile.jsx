@@ -4,8 +4,8 @@ import PageContainer from '../../components/layout/PageContainer';
 import IconButton from '../../components/common/IconButton';
 import Icon from '../../assets/icons/Icon';
 import Button from '../../components/common/Button';
-import { user } from '../../data/placeholderData';
-import { setAuthenticated } from '../../utils/auth';
+import { displayNameFromEmail, getCurrentUser, setAuthenticated } from '../../utils/auth';
+import { useCart } from '../../hooks/useCart';
 import './Profile.css';
 
 const menuItems = [
@@ -16,6 +16,10 @@ const menuItems = [
 
 export default function Profile() {
   const navigate = useNavigate();
+  const { orders, switchUser } = useCart();
+  const currentUser = getCurrentUser();
+  const displayName = currentUser?.name || (currentUser?.email ? displayNameFromEmail(currentUser.email) : 'Guest');
+  const email = currentUser?.email || 'Not signed in';
 
   return (
     <>
@@ -25,22 +29,22 @@ export default function Profile() {
           <div className="profile__avatar">
             <Icon name="person" size={36} />
           </div>
-          <h2 className="profile__name">{user.name}</h2>
-          <p className="profile__email">{user.email}</p>
-          <span className="profile__membership">{user.membership}</span>
+          <h2 className="profile__name">{displayName}</h2>
+          <p className="profile__email">{email}</p>
+          <span className="profile__membership">SmartMart Member</span>
         </div>
 
         <div className="profile__stats">
           <div className="profile__stat">
-            <span className="profile__stat-value">{user.stats.orders}</span>
+            <span className="profile__stat-value">{orders.length}</span>
             <button className="profile__stat-label" onClick={() => navigate('/orders')}>Orders</button>
           </div>
           <div className="profile__stat">
-            <span className="profile__stat-value">{user.stats.favorites}</span>
+            <span className="profile__stat-value">0</span>
             <span className="profile__stat-label">Favorites</span>
           </div>
           <div className="profile__stat">
-            <span className="profile__stat-value">{user.stats.reviews}</span>
+            <span className="profile__stat-value">0</span>
             <span className="profile__stat-label">Reviews</span>
           </div>
         </div>
@@ -65,6 +69,7 @@ export default function Profile() {
           icon={<Icon name="logout" size={18} />}
           onClick={() => {
             setAuthenticated(false);
+            switchUser(null);
             navigate('/login');
           }}
         >

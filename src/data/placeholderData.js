@@ -49,33 +49,6 @@ export const paymentMethods = [
   { id: 'cod', label: 'Cash on Delivery', subtitle: 'Pay when you receive', icon: 'cash' },
 ];
 
-export const orders = [
-  {
-    id: 'SM245789',
-    status: 'Delivered',
-    orderedAt: 'May 11, 2026 at 2:45 PM',
-    deliveredAt: 'May 11, 2026 at 3:15 PM',
-    date: 'May 11, 2026',
-    time: '2:45 PM',
-    items: [
-      { id: 'p1', name: 'Fresh Apples', emoji: '🍎', quantity: 2, unitPrice: 2.99 },
-      { id: 'p2', name: 'Organic Milk', emoji: '🥛', quantity: 1, unitPrice: 4.49 },
-    ],
-    moreItemsCount: 2,
-    subtotal: 17.75,
-    tax: 1.42,
-    deliveryFee: 0,
-    total: 19.17,
-  },
-];
-
-export const user = {
-  name: 'Padma Venkata',
-  email: 'padma@example.com',
-  membership: 'Premium Member',
-  stats: { orders: 24, favorites: 12, reviews: 5 },
-};
-
 export const TAX_RATE = 0.08;
 
 export function calcSummary(items) {

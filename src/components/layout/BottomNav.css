@@ -27,18 +27,8 @@
   color: var(--color-text-muted);
   font-size: var(--fs-xs);
   min-width: 0;
-  /* Each item's natural DOM slot is fixed (scan=0, home=1, cart=2); --shift is the
-     number of slot-widths to offset it into its current visual slot. Swapping two
-     tabs only ever changes their two --shift values, so the third item's transform
-     never changes and it stays visually still. This horizontal reposition is
-     always quick, in both directions — it should read as a clean swap, not a
-     visible slide. The slow, visible "arriving at center" motion lives on
-     .bottom-nav__lift below instead. */
-  transform: translateX(calc(var(--shift, 0) * 100%));
-  /* No transform transition: the horizontal slot swap happens in a single
-     instant frame, never as a visible slide. Everything "visible" about
-     arriving at a tab lives in .bottom-nav__lift / icon-wrap below, which
-     only animate in place, after the position has already changed. */
+  /* Fixed position — Home/Scan/Cart never swap places. Only the active
+     tab's own icon animates (lift + pop below), always in place. */
   transition: color 0.7s ease;
 }
 

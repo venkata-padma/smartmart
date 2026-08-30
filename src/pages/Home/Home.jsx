@@ -8,11 +8,14 @@ import ProductCard from '../../components/product/ProductCard';
 import EmptyState from '../../components/common/EmptyState';
 import { categories, products } from '../../data/placeholderData';
 import { useCart } from '../../hooks/useCart';
+import { displayNameFromEmail, getCurrentUser } from '../../utils/auth';
 import './Home.css';
 
 export default function Home() {
   const navigate = useNavigate();
   const { addItem } = useCart();
+  const currentUser = getCurrentUser();
+  const firstName = (currentUser?.name || (currentUser?.email ? displayNameFromEmail(currentUser.email) : '')).split(' ')[0];
   const [query, setQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState(null);
   const normalizedQuery = query.trim().toLowerCase();
@@ -27,7 +30,7 @@ export default function Home() {
     <PageContainer className="home-page">
       <div className="home__topbar">
         <div>
-          <p className="home__welcome">Welcome back</p>
+          <p className="home__welcome">{firstName ? `Welcome back, ${firstName}` : 'Welcome back'}</p>
           <h1 className="home__brand">SmartMart</h1>
         </div>
         <IconButton
