@@ -7,13 +7,11 @@ import CategoryCard from '../../components/product/CategoryCard';
 import ProductCard from '../../components/product/ProductCard';
 import EmptyState from '../../components/common/EmptyState';
 import { categories, products } from '../../data/placeholderData';
-import { useCart } from '../../hooks/useCart';
 import { displayNameFromEmail, getCurrentUser } from '../../utils/auth';
 import './Home.css';
 
 export default function Home() {
   const navigate = useNavigate();
-  const { addItem } = useCart();
   const currentUser = getCurrentUser();
   const firstName = (currentUser?.name || (currentUser?.email ? displayNameFromEmail(currentUser.email) : '')).split(' ')[0];
   const [query, setQuery] = useState('');
@@ -57,7 +55,7 @@ export default function Home() {
       {visibleProducts.length ? (
         <div className="home__products">
           {visibleProducts.map((product) => (
-            <ProductCard key={product.id} product={product} onAdd={addItem} />
+            <ProductCard key={product.id} product={product} />
           ))}
         </div>
       ) : (
